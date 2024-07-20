@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil Produits{% endblock %}
+
+{% block body %}
+    <h1>Gestion des Produits</h1>
+    <p>Bienvenue dans la section de gestion des produits.</p>
+    <ul>
+        <li><a href="{{ path('app_produit_list') }}">Voir la liste des produits</a></li>
+        <li><a href="{{ path('app_produit_add') }}">Ajouter un nouveau produit</a></li>
+    </ul>
+    <a href="{{ path('app_categorie_index') }}">Aller à la gestion des catégories</a>
+{% endblock %}

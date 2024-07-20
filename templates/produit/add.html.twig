@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un Produit{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un nouveau produit</h1>
+    <form method="post">
+        <div>
+            <label for="titre">Titre :</label>
+            <input type="text" id="titre" name="titre" required>
+        </div>
+        <div>
+            <label for="nb_Produit">Nombre de produits :</label>
+            <input type="number" id="nb_Produit" name="nb_Produit" required>
+        </div>
+        <div>
+            <label for="date_fa">Date de fabrication :</label>
+            <input type="datetime-local" id="date_fa" name="date_fa" required>
+        </div>
+        <div>
+            <label for="categorie_id">Catégorie :</label>
+            <select id="categorie_id" name="categorie_id" required>
+                {% for categorie in categories %}
+                    <option value="{{ categorie.id }}">{{ categorie.titre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Ajouter le produit</button>
+    </form>
+    <br>
+    <a href="{{ path('app_produit_list') }}">Retour à la liste des produits</a>
+{% endblock %}

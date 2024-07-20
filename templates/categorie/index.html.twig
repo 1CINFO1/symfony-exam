@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil Catégories{% endblock %}
+
+{% block body %}
+    <h1>Gestion des Catégories</h1>
+    <p>Bienvenue dans la section de gestion des catégories.</p>
+    <a href="{{ path('app_categorie_list') }}">Voir la liste des catégories</a>
+    <br>
+    <a href="{{ path('app_produit_index') }}">Aller à la gestion des produits</a>
+{% endblock %}

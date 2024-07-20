@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+    <h1>Liste des produits</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Nombre</th>
+                <th>Date de fabrication</th>
+                <th>Catégorie</th>
+                <th>Nombre de likes</th>
+                <th>Action</th> {# Add this column for the like button #}
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.titre }}</td>
+                <td>{{ produit.nbProduit }}</td>
+                <td>{{ produit.dateFa|date('Y-m-d H:i:s') }}</td>
+                <td>{{ produit.categorie.titre }}</td>
+                <td>{{ produit.nbLikes }}</td>
+                <td>
+                    <form method="post" action="{{ path('app_produit_like', {'id': produit.id}) }}">
+                        <button type="submit">Like</button>
+                        <input type="hidden" name="product_id" value="{{ produit.id }}">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_produit_add') }}">Ajouter un nouveau produit</a>
+    <br>
+    <a href="{{ path('app_produit_index') }}">Retour à l'accueil des produits</a>
+{% endblock %}
